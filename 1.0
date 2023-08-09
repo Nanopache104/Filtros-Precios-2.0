@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redireccionar a Google Sheets</title>
+</head>
+<body>
+    <h1>Ingresa tu nombre y haz clic en el enlace para ver la hoja de cálculo correspondiente</h1>
+    <input type="text" id="nombre" placeholder="Ingresa tu nombre">
+    <button onclick="abrirSheet()">Abrir hoja de cálculo</button>
+
+    <script>
+        // Objeto que mapea nombres con sus URLs correspondientes
+        const nombresYEnlaces = {
+            "celulosa litoral": "https://docs.google.com/spreadsheets/d/1kvRBQLnwmrp0y3D6o_f_tpjDgyq4uMYCc3QxDcBFxgs/edit?usp=sharing",
+            "eco pilar": "https://docs.google.com/spreadsheets/d/1D4cuiXaaf7bVc2iXgngkY86lnFMTNQcr32N2etsJHgw/edit?usp=sharing",
+            // Agrega más nombres y URLs según sea necesario
+        };
+
+        function abrirSheet() {
+            const nombre = document.getElementById("nombre").value.toLowerCase(); // Convertir a minúsculas
+            const urlBase = nombresYEnlaces[nombre];
+            if (urlBase) {
+                const enlace = document.createElement('a');
+                enlace.href = urlBase;
+                enlace.target = '_blank';
+                enlace.click();
+            } else {
+                alert("Nombre no encontrado o enlace no definido.");
+            }
+        }
+    </script>
+</body>
+</html>
